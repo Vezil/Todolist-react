@@ -1,10 +1,10 @@
-import {decorate, observable} from 'mobx'; 
-// , action, computed
+import  {observable, action, computed} from 'mobx'; 
+
 class TodoStore {
 
-     newId= 3;
-     titleEditCashe = '';
-     todos = [
+     @observable newId= 3;
+     @observable titleEditCashe = '';
+     @observable todos = [
       {
         'id':1,
         'title':'Matero X',
@@ -20,11 +20,6 @@ class TodoStore {
     ];
 }
 
-decorate(TodoStore, {
-    newId: observable,
-    titleEditCashe: observable,
-    todos: observable,
-  });
 
 const store = new TodoStore();
 export default store;

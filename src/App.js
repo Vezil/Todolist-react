@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import TodoItem from './components/TodoItem'
+import {inject, observer} from 'mobx-react';
+
+@inject('TodoStore')
+@observer
 
 class App extends Component {
   render(){
+    const TodoStore = this.props.TodoStore;
   return (
     <div className="App">
       <header className="App-header">
@@ -12,7 +17,7 @@ class App extends Component {
       <div className="Todo-container">
         <input type="text" className="todo-input" placeholder="What do you have to do ?" ref={this.todoInput} onKeyUp={this.addTodo} />
       <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-        {this.state.todos.map((todo,index) =>  
+        {TodoStore.todos.map((todo,index) =>  
 
         <TodoItem  key={todo.id} todo={todo} index={index} checkTodo={this.checkTodo} doneEdit={this.doneEdit} 
         cancelEdit={this.cancelEdit} editTodo={this.editTodo} deleteTodo={this.deleteTodo}/>
