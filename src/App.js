@@ -8,27 +8,25 @@ class App extends Component {
       <header className="App-header">
       </header>
       <div className="Todo-container">
-        <input type="text" className="todo-input" placeholder="What do you have to do ?"/>
-          <div className="todo-item">
-            <input type="checkbox"/>
-            <div className="todo-item-label">Todo Item1</div>
-            <div className="remove-item">&times;</div>
-          </div>
+        <input type="text" className="todo-input" placeholder="What do you have to do ?" ref={this.todoInput} onKeyUp={this.addTodo} />
 
-          <div className="todo-item">
-            <input type="checkbox"/>
-            <div className="todo-item-label">Todo Item1</div>
-            <div className="remove-item">&times;</div>
-          </div>
+        {this.state.todos.map((todo,index) =>
 
+            <div key={todo.id} className="todo-item">
+              <input type="checkbox"/>
+              <div className="todo-item-label">{todo.title}</div>
+              <div className="remove-item">&times;</div>
+            </div>
+        )
+        }
       </div>
-
-
 
     </div>
   );
   
   }
+
+  todoInput = React.createRef();
 
   state = {
     todos:[
@@ -43,6 +41,27 @@ class App extends Component {
         'done': false,
       },
     ]
+  }
+
+  addTodo = event => {
+
+    if(event.key === 'Enter'){
+
+      const todoInput = this.todoInput.current.value;
+      this.setState((prevState, props) => {
+        let todos = prevState.todos;
+
+        todos.push({
+          id:3,
+          title: todoInput,
+          done:false,
+        })
+        return{
+          todos: todos,
+
+        };
+      });
+    }
   }
 }
 
