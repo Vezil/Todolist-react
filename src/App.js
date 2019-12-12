@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class App extends Component {
   render(){
@@ -9,32 +10,35 @@ class App extends Component {
       </header>
       <div className="Todo-container">
         <input type="text" className="todo-input" placeholder="What do you have to do ?" ref={this.todoInput} onKeyUp={this.addTodo} />
-
+      <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
         {this.state.todos.map((todo,index) =>
-
-            <div key={todo.id} className="todo-item">
-              <input type="checkbox" onChange={(event) => this.checkTodo(todo,index,event)}/>          
-            {!todo.editing &&
-              <div className={"todo-item-label " + (todo.done ? 'completed' : '')}
-              onDoubleClick={(event) => this.editTodo(todo,index,event)}
-              >{todo.title}</div>
-            }
-            {todo.editing &&
-              <input className="todo-item-edit" type="text" autoFocus defaultValue={todo.title} 
-              onBlur={(event) => this.doneEdit(todo,index,event)}
-              onKeyUp={(event) => {
-                if(event.key === 'Enter') {
-               this.doneEdit(todo,index,event);
-              } else if (event.key === 'Escape') {
-                this.cancelEdit(todo,index,event);
+          
+              <div key={todo.id} className="todo-item">
+                <input type="checkbox" onChange={(event) => this.checkTodo(todo,index,event)}/>          
+              {!todo.editing &&
+                <div className={"todo-item-label " + (todo.done ? 'completed' : '')}
+                onDoubleClick={(event) => this.editTodo(todo,index,event)}
+                >{todo.title}</div>
               }
-            
-            }} />
-            }
-              <div className="remove-item" onClick={(event) =>this.deleteTodo(index)}>&times;</div>
-            </div>
+              {todo.editing &&
+                <input className="todo-item-edit" type="text" autoFocus defaultValue={todo.title} 
+                onBlur={(event) => this.doneEdit(todo,index,event)}
+                onKeyUp={(event) => {
+                  if(event.key === 'Enter') {
+                this.doneEdit(todo,index,event);
+                } else if (event.key === 'Escape') {
+                  this.cancelEdit(todo,index,event);
+                }
+              
+              }} />
+              }
+                <div className="remove-item" onClick={(event) =>this.deleteTodo(index)}>&times;</div>
+              </div>
+
+        
         )
         }
+      </ReactCSSTransitionGroup>
       </div>
 
     </div>
@@ -75,10 +79,10 @@ class App extends Component {
 
       this.setState((prevState, props) => {
         let todos = prevState.todos;
-        let newId = prevState.newId++;
+        let newId = prevState.newId+1;
 
         todos.push({
-          id:3,
+          id:newId,
           title: todoInput,
           done:false,
         })
@@ -135,8 +139,16 @@ class App extends Component {
     this.setState((prevState, props) => {
       let todos = prevState.todos;
        todo.editing = false;
+
+       if(event.target.value.trim().length === 0) {
+         todo.title = prevState.titleEditCashe;
+       } else {
+
        todo.title = event.target.value;
+      }
+
       todos.splice(index,1,todo);
+
       return{
         todos: todos,
       };
