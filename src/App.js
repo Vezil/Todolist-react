@@ -13,9 +13,9 @@ class App extends Component {
         {this.state.todos.map((todo,index) =>
 
             <div key={todo.id} className="todo-item">
-              <input type="checkbox"/>
-              <div className="todo-item-label">{todo.title}</div>
-              <div className="remove-item">&times;</div>
+              <input type="checkbox" onChange={(event) => this.checkTodo(todo,index,event)}/>
+              <div className={"todo-item-label " + (todo.done ? 'completed' : '')}>{todo.title}</div>
+              <div className="remove-item" onClick={(event) =>this.deleteTodo(index)}>&times;</div>
             </div>
         )
         }
@@ -29,6 +29,8 @@ class App extends Component {
   todoInput = React.createRef();
 
   state = {
+    newId: 3,
+
     todos:[
       {
         'id':1,
@@ -48,8 +50,14 @@ class App extends Component {
     if(event.key === 'Enter'){
 
       const todoInput = this.todoInput.current.value;
+      
+      if(todoInput.trim().length === 0){
+        return;
+      }
+
       this.setState((prevState, props) => {
         let todos = prevState.todos;
+        let newId = prevState.newId++;
 
         todos.push({
           id:3,
@@ -58,11 +66,37 @@ class App extends Component {
         })
         return{
           todos: todos,
-
+          newId: newId,
         };
       });
+
+      this.todoInput.current.value=''
     }
   }
+
+    deleteTodo = index => {
+
+      this.setState((prevState, props) => {
+        let todos = prevState.todos;
+        todos.splice(index,1);
+        return{
+          todos: todos,
+        };
+    });
+  }
+
+  
+  checkTodo = (todo,index,event) => {
+
+    this.setState((prevState, props) => {
+      let todos = prevState.todos;
+       todo.done = !todo.done;
+      todos.splice(index,1,todo);
+      return{
+        todos: todos,
+      };
+  });
+}
 }
 
 export default App;
