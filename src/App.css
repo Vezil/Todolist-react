@@ -1,38 +1,72 @@
-.App {
+@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css");
+
+*{
+  background:url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_wall.png);
+  color:aquamarine;
+}
+
+.todo-input{
+
+    width:100%;
+    padding: 10px 18px;
+    margin-bottom: 30px !important;
+    text-shadow: 1px 1px #0a1f18;  
+}
+.todo-item{
+
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.delete-todo{
+    cursor: pointer;
+    margin-left: 14px;
+}
+.delete-todo:hover{
+    color:red;
+}
+
+.todo-item-edit{
+    display: flex;
+    margin-left:12px;
+    width:100%;
+    padding:10px;
+    border: 1px solid #ccc;
+}
+.todo-item-label{
+    padding: 10px;
+    border: 1px solid rgb(12, 58, 12);
+    margin-left: 12px;
+}
+.todo-item-left{
+
+    display:flex;
+    align-items: center;
+}
+  .todo-input::placeholder{
+    color:rgb(100, 110, 110);
+}
+.completed{
+    text-decoration: line-through;
+    color: gray;
+    opacity:0.2;
+    transition: 1s;
+}
+.hello-container{
+    margin-bottom: 25px;
+    color:rgb(235, 240, 230);
+    font-size:18px;
+    padding:8px;
+}
+.page{
+    width:80%;
+    text-align: center;
+    margin:auto;
+}
+.Todo-container{
+  max-width:600px;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  margin:auto;
+  margin-top:100px;
 }
