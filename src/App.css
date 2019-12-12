@@ -30,7 +30,7 @@
 .todo-item-edit{
     display: flex;
     margin-left:12px;
-    width:100%;
+    width:50%;
     padding:10px;
     border: 1px solid #ccc;
 }
