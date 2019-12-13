@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import TodoItem from './components/TodoItem'
@@ -11,7 +12,16 @@ class App extends Component {
   render(){
     const TodoStore = this.props.TodoStore;
   return (
+
     <div className="App">
+        
+        <Router>
+            <Route exact path="pages/Home" component={Home} />
+            <Route exact path="pages/register" component={Register} />
+            <Route exact path="pages/login" component={Login} />
+            <Route exact path="pages/profile" component={Profile} />     
+        </Router>
+
       <header className="App-header">
       </header>
       <div className="Todo-container">

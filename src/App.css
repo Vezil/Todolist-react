@@ -89,3 +89,16 @@
   transform: rotateX(30deg);
   transition: opacity 500ms ease-out;
 }
+
+/* home */
+
+.home{
+
+  font-family: 'Lobster', cursive;
+  font-size: 2rem;
+  width:80%;
+  text-align:center;
+  justify-content: center;
+  margin:auto;
+  margin-top:3%;
+  }
