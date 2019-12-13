@@ -5,6 +5,12 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import TodoItem from './components/TodoItem'
 import {inject, observer} from 'mobx-react';
 
+import Navbar from './components/pages/Navbar';
+import Home from './components/pages/Home';
+import Register from './components/pages/Register';
+import Login from './components/pages/Login';
+import Todos from './components/pages/Todos';
+
 @inject('TodoStore')
 @observer
 
@@ -12,15 +18,14 @@ class App extends Component {
   render(){
     const TodoStore = this.props.TodoStore;
   return (
-
+   <Router>
     <div className="App">
-        
-        <Router>
+        <Navbar/> 
             <Route exact path="pages/Home" component={Home} />
             <Route exact path="pages/register" component={Register} />
             <Route exact path="pages/login" component={Login} />
-            <Route exact path="pages/profile" component={Profile} />     
-        </Router>
+            <Route exact path="pages/todos" component={Todos} />     
+        
 
       <header className="App-header">
       </header>
@@ -36,6 +41,7 @@ class App extends Component {
       </div>
 
     </div>
+  </Router>
   );
   
   }

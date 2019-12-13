@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import {login} from './functionality/UserFunctions'
-import { register } from '@testing-library/react'
+import { register } from './functionality/UserFunctions'
 
 class Register extends Component {
 
@@ -12,10 +11,10 @@ class Register extends Component {
             password: '',
             errors: ''
         }
-    }
+    
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
-
+}
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })

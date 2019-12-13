@@ -21,14 +21,14 @@ class Navbar extends Component {
             <ul className="nav">
                 <li><Link to="/">Home</Link></li>
                 <li className="yourtodo"><Link to="/todos">Todos</Link></li>     
-                <li><a href="" onClick={this.logOut.bind(this)}> Logout </a></li>        
+                <li><a href="/" onClick={this.logOut.bind(this)}> Logout </a></li>        
             </ul>
         )
         return(
             <nav>
                 <ul>
                     <li>
-                        <Link>Home</Link>
+                        <Link to="/">Home</Link>
                     </li>
                 </ul>
                 {localStorage.usertoken ? userLink : loginRegLink}
@@ -37,3 +37,5 @@ class Navbar extends Component {
         )
     }
 }
+
+export default withRouter(Navbar)

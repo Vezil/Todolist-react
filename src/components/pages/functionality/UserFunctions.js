@@ -10,7 +10,7 @@ export const register = newUser => {
     })
     .catch(error => {
         console.log(error);
-        )
+        
     })
 }
 
@@ -18,7 +18,7 @@ export const login = user => {
     return axios
     .post('/login',{
         username: user.username,
-        password: password
+        password: user.password
     })
     .then(response => {
         localStorage.setItem('usertoken',response.data.token)
@@ -26,7 +26,7 @@ export const login = user => {
     })       
     .catch(error => {
         console.log(error);
-        )
+        
     })
 }
 
@@ -42,6 +42,6 @@ export const getUser = () => {
     })
     .catch(error => {
         console.log(error);
-        )
+        
     })
 }
