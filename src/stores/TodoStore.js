@@ -8,20 +8,7 @@ class TodoStore {
      @observable todoInput = React.createRef();
      @observable newId= 3;
      @observable titleEditCashe = '';
-     @observable todos = [
-      {
-        'id':1,
-        'title':'Matero X',
-        'done': false,
-        'editing': false,
-      },
-      {
-        'id':2,
-        'title':'Bombila X',
-        'done': false,
-        'editing': false,
-      },
-    ];
+     @observable todos = [];
 
     @action addTodo = event => {
 

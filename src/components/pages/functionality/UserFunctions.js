@@ -2,6 +2,7 @@ import axios from 'axios'
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api'
 
+
 export const register = newUser => {
 
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.usertoken
@@ -30,8 +31,8 @@ export const login = user => {
         password: user.password
     })
     .then(response => {
-        localStorage.setItem('usertoken',response.data.token)
-        console.log(response);
+        localStorage.setItem('usertoken',response.data.access_token)
+         console.log(localStorage.usertoken);
     })       
     .catch(error => {
         console.log(error);
@@ -44,7 +45,7 @@ export const getUser = () => {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.usertoken
 
     return axios
-    .post('/user')
+    .get('/todos')
     .then(response => {
         console.log(response);
         return response.data

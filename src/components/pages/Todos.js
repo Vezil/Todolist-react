@@ -17,16 +17,10 @@ class Todos extends Component {
         }
     }
 
-    componentDidMount(){
-        getUser().then(response =>{
-            this.setState({
-                // name:response.user.name,
-                // email:response.user.emial
-            })
-        })
-    }
     render(){
+       
         const TodoStore = this.props.TodoStore;
+
         return(
             <div>
                 
@@ -45,6 +39,19 @@ class Todos extends Component {
             </div>
         )
     }
+
+
+    componentDidMount(){
+        getUser().then(response =>{
+            // this.TodoStore = response
+            this.props.TodoStore.todos = response;
+            // console.log();
+        })
+    }
+
 }
+
+
+
 
 export default Todos
