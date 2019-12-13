@@ -29,6 +29,15 @@ class TodoStore {
 
         this.newId++;
         this.todoInput.current.value=''
+
+        axios.post('/todos',{
+          title: todoInput,
+          done: false,
+      })
+      .then(response =>{
+           console.log(response)
+      })
+      .catch(error=>{console.log(error)})
       }
     }
   @action deleteTodo = id => {
@@ -36,6 +45,12 @@ class TodoStore {
       const index = this.todos.findIndex(item => item.id === id);
 
       this.todos.splice(index,1);
+
+      axios.delete('/todos/'+ id)
+            .then(response =>{
+                 console.log(response)
+            })
+            .catch(error=>{console.log(error)})
   }
 
   
@@ -56,6 +71,7 @@ class TodoStore {
       
       this.todos.splice(index,1,todo);
 
+
   }
 
   @action doneEdit = (todo,event) => {
@@ -70,6 +86,13 @@ class TodoStore {
       const index = this.todos.findIndex(item => item.id === todo.id);
 
       this.todos.splice(index,1,todo);
+
+      axios.patch('/todos/'+ todo.id,{
+        title: todo.title,
+        done: todo.done,
+        }).then(response =>{
+                 console.log(response)
+        }).catch(error=>{console.log(error)})
   }
 
   @action cancelEdit = (todo,event) => {
@@ -82,15 +105,17 @@ class TodoStore {
       this.todos.splice(index,1,todo);
    }
 
-   @action retrieveTodos = () => {
-     axios.get('/todos')
-     .then(response => {
-       console.log(response.data);
-     })
-     .catch(error => {
-       console.log(error);
-     })
-   }
+  //  @action retrieveTodos = () => {
+  //    axios.get('/todos')
+  //    .then(response => {
+  //      console.log(response.data);
+  //    })
+  //    .catch(error => {
+  //      console.log(error);
+  //    })
+  //  }
+
+
       
       
 }
