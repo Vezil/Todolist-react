@@ -8,7 +8,7 @@ class Login extends Component {
         this.state = {
             email:'',
             password: '',
-            errors: ''
+            errors: {}
         }
     
     this.onChange = this.onChange.bind(this)
@@ -28,26 +28,26 @@ class Login extends Component {
         }
 
         login(user).then(response =>{
-            if(response){
+
                 this.props.history.push(`/todos`)
-            }
+        
         })
     }
 
     render(){
         return(
-        <div class="login-form page" >
-            <h1 class="login-header">Login</h1>
-            <form action="" noValidate onSubmit={this.onSubmit} className="form">
+        <div className="login-form page" >
+            <h1 className="login-header">Login</h1>
+            <form noValidate onSubmit={this.onSubmit} className="form">
                 
-                <div class="form-control">
-                    <input type="email" name="username" className="login-input" placeholder="Email" value={this.state.email} onChange={this.onChange}/>
+                <div className="form-control">
+                    <input type="email" name="email" className="login-input" placeholder="Email" value={this.state.email} onChange={this.onChange}/>
                 </div>
-                <div class="form-control">
+                <div className="form-control">
                     <input type="password" name="password" className="login-input" placeholder="Password" value={this.state.password} onChange={this.onChange}/>
                 </div>
-                <div class="form-control">
-                    <button type="submit" class="btn-submit" disabled="loading">
+                <div className="form-control">
+                    <button type="submit" className="btn-submit">
                         {/* <div class="spinner"  v-if="loading"><div class="lds-facebook"><div></div><div></div><div></div></div>  </div>  */}
                         Login</button>
                     {/* <div v-if="serverErrors" class="server-errors">{{serverErrors}} </div>  

@@ -9,12 +9,12 @@ class Register extends Component {
             name:'',
             email:'',
             password: '',
-            errors: ''
+            errors: {}
         }
     
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
-}
+    }   
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
@@ -24,7 +24,7 @@ class Register extends Component {
         e.preventDefault()
 
         const newUser = {
-            name: this.state.user,
+            name: this.state.name,
             email: this.state.email,
             password: this.state.password
         }
@@ -46,13 +46,13 @@ class Register extends Component {
                     <input type="text" name="name" className="login-input" placeholder="Name" value={this.state.name} onChange={this.onChange}/>
                 </div>
                 <div class="form-control">
-                    <input type="email" name="username" className="login-input" placeholder="Email" value={this.state.email} onChange={this.onChange}/>
+                    <input type="email" name="email" className="login-input" placeholder="Email" value={this.state.email} onChange={this.onChange}/>
                 </div>
                 <div class="form-control">
                     <input type="password" name="password" className="login-input" placeholder="Password" value={this.state.password} onChange={this.onChange}/>
                 </div>
                 <div class="form-control">
-                    <button type="submit" class="btn-submit" disabled="loading">
+                    <button type="submit" class="btn-submit" >
                         {/* <div class="spinner"  v-if="loading"><div class="lds-facebook"><div></div><div></div><div></div></div>  </div>  */}
                         Create Account</button>
                     {/* <div v-if="serverErrors" class="server-errors">{{serverErrors}} </div>  
