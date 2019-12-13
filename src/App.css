@@ -312,7 +312,16 @@ button[type="submit"]:hover{
   .spinner{
     position: fixed;
     left:40%;
-}
+    }
+    .navbar ul{
+      padding:0px;
+    }
+    .navbar .nav{
+      padding:0px
+    }
+    .Todo-container{
+      width:80vw;
+    }
 }
 
 .navbar ul{

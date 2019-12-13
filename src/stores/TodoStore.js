@@ -91,7 +91,7 @@ class TodoStore {
         title: todo.title,
         done: todo.done,
         }).then(response =>{
-                 console.log(response)
+                 //console.log(response)
         }).catch(error=>{console.log(error)})
   }
 
@@ -103,20 +103,7 @@ class TodoStore {
       const index = this.todos.findIndex(item => item.id === todo.id);
       
       this.todos.splice(index,1,todo);
-   }
-
-  //  @action retrieveTodos = () => {
-  //    axios.get('/todos')
-  //    .then(response => {
-  //      console.log(response.data);
-  //    })
-  //    .catch(error => {
-  //      console.log(error);
-  //    })
-  //  }
-
-
-      
+   }    
       
 }
 

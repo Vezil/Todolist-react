@@ -29,34 +29,31 @@ class Register extends Component {
             password: this.state.password
         }
 
-        register(newUser).then(response =>{
+        register(newUser).then(response =>{ 
             if(response){
-                this.props.history.push(`/login`)
-            }
-        })
+                this.props.history.push(`/login`)     
+            }       
+        }).catch(error=>{console.log(error)})
     }
 
     render(){
         return(
-        <div class="login-form page" >
-            <h1 class="login-header">Register</h1>
+        <div className="login-form page" >
+            <h1 className="login-header">Register</h1>
             <form action="" noValidate onSubmit={this.onSubmit} className="form">
                 
-                <div class="form-control">
+                <div className="form-control">
                     <input type="text" name="name" className="login-input" placeholder="Name" value={this.state.name} onChange={this.onChange}/>
                 </div>
-                <div class="form-control">
+                <div className="form-control">
                     <input type="email" name="email" className="login-input" placeholder="Email" value={this.state.email} onChange={this.onChange}/>
                 </div>
-                <div class="form-control">
+                <div className="form-control">
                     <input type="password" name="password" className="login-input" placeholder="Password" value={this.state.password} onChange={this.onChange}/>
                 </div>
-                <div class="form-control">
-                    <button type="submit" class="btn-submit" >
-                        {/* <div class="spinner"  v-if="loading"><div class="lds-facebook"><div></div><div></div><div></div></div>  </div>  */}
+                <div className="form-control">
+                    <button type="submit" className="btn-submit" >
                         Create Account</button>
-                    {/* <div v-if="serverErrors" class="server-errors">{{serverErrors}} </div>  
-                    <div v-if="successMessages" class="success-messages">{{ successMessages }}</div> */}
                 </div>    
                     
             </form>

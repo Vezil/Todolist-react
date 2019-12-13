@@ -43,9 +43,7 @@ class Todos extends Component {
 
     componentDidMount(){
         getUser().then(response =>{
-            // this.TodoStore = response
             this.props.TodoStore.todos = response;
-            // console.log();
         })
     }
 

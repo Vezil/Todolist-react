@@ -11,10 +11,8 @@ class Navbar extends Component {
         const loginRegLink = (
             <ul className="nav">
                 <li><Link to="/">Home</Link></li>
-                {/* <li className="yourtodo"><Link to="/todos">Todos</Link></li> */}
                 <li><Link to="/login">Login</Link></li>
                 <li><Link to="/register">Register</Link></li>        
-                {/* <li v-if="loggedIn"><Link to="/logout">Logout</Link></li>         */}
             </ul>
         )
         const userLink = (

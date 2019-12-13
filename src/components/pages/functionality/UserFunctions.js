@@ -16,10 +16,10 @@ export const register = newUser => {
         headers: { 'Content-Type': 'application/json' }
     })
     .then(response => {
-        console.log(response);
+        return alert("CREATED! :)");
     })
     .catch(error => {
-        console.log(error);
+        alert(error + " incorrect data");
         
     })
 }
@@ -32,10 +32,10 @@ export const login = user => {
     })
     .then(response => {
         localStorage.setItem('usertoken',response.data.access_token)
-         console.log(localStorage.usertoken);
+        return response.data.access_token
     })       
     .catch(error => {
-        console.log(error);
+        alert(error + " incorrect data");
         
     })
 }
@@ -47,11 +47,10 @@ export const getUser = () => {
     return axios
     .get('/todos')
     .then(response => {
-        console.log(response);
+        // console.log(response);
         return response.data
     })
     .catch(error => {
-        console.log(error);
-        
+        console.log(error)     
     })
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
 
 const TodoItem = inject('TodoStore')(observer(props => {
@@ -31,13 +31,13 @@ const TodoItem = inject('TodoStore')(observer(props => {
     );
 }));
 
-TodoItem.propTypes = {
-    todo: PropTypes.object.isRequired,
-    checkTodo: PropTypes.func.isRequired,
-    editTodo: PropTypes.func.isRequired,
-    doneTodo: PropTypes.func.isRequired,
-    cancelTodo: PropTypes.func.isRequired,
-    deleteTodo: PropTypes.func.isRequired,
-};
+// TodoItem.propTypes = {
+//     todo: PropTypes.object.isRequired,
+//     checkTodo: PropTypes.func.isRequired,
+//     editTodo: PropTypes.func.isRequired,
+//     doneTodo: PropTypes.func.isRequired,
+//     cancelTodo: PropTypes.func.isRequired,
+//     deleteTodo: PropTypes.func.isRequired,
+// };
 
 export default TodoItem;
