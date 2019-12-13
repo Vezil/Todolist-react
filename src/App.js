@@ -30,26 +30,9 @@ class App extends Component {
   
   }
 
-
-
-  // state = {
-  //   newId: 3,
-  //   titleEditCashe : '',
-  //   todos:[
-  //     {
-  //       'id':1,
-  //       'title':'Matero',
-  //       'done': false,
-  //       'editing': false,
-  //     },
-  //     {
-  //       'id':2,
-  //       'title':'Bombila',
-  //       'done': false,
-  //       'editing': false,
-  //     },
-  //   ]
-  // }
+  componentDidMount(){
+    this.props.TodoStore.retrieveTodos();
+  }
 
 }
 

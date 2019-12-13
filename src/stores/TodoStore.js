@@ -1,5 +1,8 @@
 import React from 'react';
 import  {observable, action} from 'mobx'; 
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://127.0.0.1:8000/api'
 
 class TodoStore {
      @observable todoInput = React.createRef();
@@ -90,6 +93,16 @@ class TodoStore {
       const index = this.todos.findIndex(item => item.id === todo.id);
       
       this.todos.splice(index,1,todo);
+   }
+
+   @action retrieveTodos = () => {
+     axios.get('/todos')
+     .then(response => {
+       console.log(response.data);
+     })
+     .catch(error => {
+       console.log(error);
+     })
    }
       
       
