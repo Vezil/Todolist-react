@@ -1,5 +1,12 @@
 import React, {Component} from 'react'
 import {getUser} from './functionality/UserFunctions'
+import '../../App.css';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import TodoItem from '../../components/TodoItem'
+import {inject, observer} from 'mobx-react';
+
+@inject('TodoStore')
+@observer
 
 class Todos extends Component {
     constructor(){
@@ -13,16 +20,28 @@ class Todos extends Component {
     componentDidMount(){
         getUser().then(response =>{
             this.setState({
-                name:response.user.name,
-                email:response.user.emial
+                // name:response.user.name,
+                // email:response.user.emial
             })
         })
     }
     render(){
+        const TodoStore = this.props.TodoStore;
         return(
             <div>
-                <h1>Name : {this.state.name}</h1>
-                <h2>Email : {this.state.email}</h2>
+                
+                    <header className="App-header">
+                    </header>
+                    <div className="Todo-container">
+                        <input type="text" className="todo-input" placeholder="What do you have to do ?" ref={TodoStore.todoInput} onKeyUp={TodoStore.addTodo} />
+                    <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+                        {TodoStore.todos.map(todo =>  
+
+                        <TodoItem  key={todo.id} todo={todo}/>
+                        )
+                    }
+                    </ReactCSSTransitionGroup>
+                    </div>
             </div>
         )
     }

@@ -25,13 +25,10 @@ class Navbar extends Component {
             </ul>
         )
         return(
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                </ul>
-                {localStorage.usertoken ? userLink : loginRegLink}
+            <nav className="navbar">
+                
+                    {localStorage.usertoken ? userLink : loginRegLink}
+                         
             </nav>
             
         )

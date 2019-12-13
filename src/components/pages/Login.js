@@ -29,7 +29,7 @@ class Login extends Component {
 
         login(user).then(response =>{
             if(response){
-                this.props.history.push(`/user`)
+                this.props.history.push(`/todos`)
             }
         })
     }

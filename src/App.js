@@ -21,13 +21,13 @@ class App extends Component {
    <Router>
     <div className="App">
         <Navbar/> 
-            <Route exact path="pages/Home" component={Home} />
-            <Route exact path="pages/register" component={Register} />
-            <Route exact path="pages/login" component={Login} />
-            <Route exact path="pages/todos" component={Todos} />     
+            <Route exact path="/" component={Home} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/todos" component={Todos} />     
         
 
-      <header className="App-header">
+      {/* <header className="App-header">
       </header>
       <div className="Todo-container">
         <input type="text" className="todo-input" placeholder="What do you have to do ?" ref={TodoStore.todoInput} onKeyUp={TodoStore.addTodo} />
@@ -38,7 +38,7 @@ class App extends Component {
         )
        }
       </ReactCSSTransitionGroup>
-      </div>
+      </div> */}
 
     </div>
   </Router>
