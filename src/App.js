@@ -17,9 +17,9 @@ class App extends Component {
       <div className="Todo-container">
         <input type="text" className="todo-input" placeholder="What do you have to do ?" ref={TodoStore.todoInput} onKeyUp={TodoStore.addTodo} />
       <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-        {TodoStore.todos.map((todo,index) =>  
+        {TodoStore.todos.map(todo =>  
 
-        <TodoItem  key={todo.id} todo={todo} index={index}/>
+        <TodoItem  key={todo.id} todo={todo}/>
         )
        }
       </ReactCSSTransitionGroup>
@@ -32,24 +32,24 @@ class App extends Component {
 
 
 
-  state = {
-    newId: 3,
-    titleEditCashe : '',
-    todos:[
-      {
-        'id':1,
-        'title':'Matero',
-        'done': false,
-        'editing': false,
-      },
-      {
-        'id':2,
-        'title':'Bombila',
-        'done': false,
-        'editing': false,
-      },
-    ]
-  }
+  // state = {
+  //   newId: 3,
+  //   titleEditCashe : '',
+  //   todos:[
+  //     {
+  //       'id':1,
+  //       'title':'Matero',
+  //       'done': false,
+  //       'editing': false,
+  //     },
+  //     {
+  //       'id':2,
+  //       'title':'Bombila',
+  //       'done': false,
+  //       'editing': false,
+  //     },
+  //   ]
+  // }
 
 }
 

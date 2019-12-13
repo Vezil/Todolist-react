@@ -31,7 +31,7 @@ class TodoStore {
         }
   
         this.todos.push({
-          id: this.idForTodo,
+          id: this.newId,
           title: todoInput,
           done: false,
           editing: false,
@@ -41,40 +41,54 @@ class TodoStore {
         this.todoInput.current.value=''
       }
     }
-  @action deleteTodo = index => {
+  @action deleteTodo = id => {
+
+      const index = this.todos.findIndex(item => item.id === id);
 
       this.todos.splice(index,1);
   }
 
   
-  @action checkTodo = (todo,index,event) => {
+  @action checkTodo = (todo,event) => {
     todo.done= !todo.done;
+
+    const index = this.todos.findIndex(item => item.id === todo.id);
+
     this.todos.splice(index,1,todo);
  }
 
-  @action editTodo = (todo,index,event) => {
+  @action editTodo = (todo,event) => {
 
       todo.editing = true;
       this.titleEditCashe = todo.title;
+
+      const index = this.todos.findIndex(item => item.id === todo.id);
+      
+      this.todos.splice(index,1,todo);
+
   }
 
-  @action doneEdit = (todo,index,event) => {
+  @action doneEdit = (todo,event) => {
 
       todo.editing = false;
 
       if(event.target.value.trim().length === 0){
         todo.title = this.titleEditCashe;
       } else {
-        todo.title = event.target.value
+        todo.title = event.target.value;
       }
+      const index = this.todos.findIndex(item => item.id === todo.id);
 
       this.todos.splice(index,1,todo);
   }
 
-  @action cancelEdit = (todo,index,event) => {
+  @action cancelEdit = (todo,event) => {
 
-      todo.title = this.titleEditCashe
+      todo.title = this.titleEditCashe;
       todo.editing = false;
+
+      const index = this.todos.findIndex(item => item.id === todo.id);
+      
       this.todos.splice(index,1,todo);
    }
       
